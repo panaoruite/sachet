@@ -1,3 +1,56 @@
+// ========== 移动端汉堡导航逻辑 ==========
+$(function() {
+  const $hamburger = $("#hamburger");
+  const $nav = $("#nav");
+  const $navMask = $("#navMask");
+  const $navLinks = $(".nav a");
+
+  // 打开/关闭导航
+  $hamburger.click(function() {
+    $(this).toggleClass("active");
+    if ($(this).hasClass("active")) {
+      $nav.css("transform", "translateX(0)");
+      $navMask.show();
+      $("body").css("overflow", "hidden"); // 禁止背景滚动
+    } else {
+      $nav.css("transform", "translateX(100%)");
+      $navMask.hide();
+      $("body").css("overflow", "auto");
+    }
+  });
+
+  // 点击遮罩关闭导航
+  $navMask.click(function() {
+    $hamburger.removeClass("active");
+    $nav.css("transform", "translateX(100%)");
+    $(this).hide();
+    $("body").css("overflow", "auto");
+  });
+
+  // 点击导航链接关闭导航
+  $navLinks.click(function() {
+    $hamburger.removeClass("active");
+    $nav.css("transform", "translateX(100%)");
+    $navMask.hide();
+    $("body").css("overflow", "auto");
+  });
+
+  // 窗口resize时重置导航状态
+  $(window).resize(function() {
+    if ($(window).width() > 768) {
+      $hamburger.removeClass("active");
+      $nav.css("transform", "translateX(0)"); // PC端导航默认显示
+      $navMask.hide();
+      $("body").css("overflow", "auto");
+    } else {
+      $nav.css("transform", "translateX(100%)"); // 移动端默认隐藏导航
+    }
+  }).resize(); // 初始化执行一次
+});
+
+// ========== 原有JS逻辑（导航高亮、回到顶部等） ==========
+// ... 原有代码保持不变 ...
+
 // ========== 公共交互逻辑 ==========
 $(function() {
   // 1. 导航高亮（根据当前页面URL匹配）

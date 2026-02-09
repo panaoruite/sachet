@@ -775,3 +775,296 @@ img {
   color: #555;
   line-height: 1.8;
 }
+
+/* ========== 移动端适配核心样式 ========== */
+/* 基础响应式设置 */
+@media (max-width: 1200px) {
+  .container {
+    width: 90%; /* 大屏平板/小屏PC适配 */
+  }
+}
+
+/* 平板适配 (768px - 1024px) */
+@media (max-width: 1024px) {
+  /* 公共样式 */
+  .header .container {
+    padding: 0 15px;
+  }
+  .nav ul {
+    gap: 20px;
+  }
+  .nav a {
+    font-size: 16px;
+  }
+
+  /* 首页 */
+  .show-list {
+    grid-template-columns: repeat(2, 1fr); /* 平板2列展示 */
+  }
+  .banner {
+    height: 350px; /* 降低轮播高度 */
+  }
+
+  /* AR教学页 */
+  .ar-banner {
+    height: 280px;
+  }
+  .ar-banner h1 {
+    font-size: 32px;
+  }
+  .ar-content .container {
+    padding: 30px 20px;
+  }
+  .ar-step-item {
+    flex-direction: column; /* 步骤图文上下排列 */
+    gap: 15px;
+  }
+  .ar-step-item img {
+    width: 100%; /* 步骤图全屏宽 */
+    height: auto;
+  }
+
+  /* 作品广场页 */
+  .works-banner {
+    height: 280px;
+  }
+  .works-banner h1 {
+    font-size: 32px;
+  }
+  .works-content .container {
+    padding: 30px 20px;
+  }
+  .works-list {
+    grid-template-columns: repeat(2, 1fr); /* 平板2列作品 */
+  }
+  .works-img {
+    height: 220px; /* 降低作品图片高度 */
+  }
+
+  /* 文化内涵页 */
+  .culture-banner h1 {
+    font-size: 32px;
+  }
+  .culture-item {
+    padding: 20px 15px;
+  }
+}
+
+/* 手机适配 (≤768px) */
+@media (max-width: 768px) {
+  /* ===== 移动端汉堡导航 ===== */
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 260px;
+    height: 100vh;
+    background-color: #f8f3e6;
+    z-index: 9998;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    padding-top: 80px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  }
+  .nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0 20px;
+  }
+  .nav li {
+    border-bottom: 1px solid #eee;
+  }
+  .nav a {
+    display: block;
+    padding: 15px 0;
+    font-size: 18px;
+  }
+
+  /* 汉堡按钮 */
+  .hamburger {
+    display: block;
+    width: 36px;
+    height: 36px;
+    position: relative;
+    cursor: pointer;
+    z-index: 9999;
+  }
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #8a5a2b;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s;
+  }
+  .hamburger span:nth-child(1) {
+    top: 8px;
+  }
+  .hamburger span:nth-child(2) {
+    top: 16px;
+  }
+  .hamburger span:nth-child(3) {
+    top: 24px;
+  }
+  /* 汉堡按钮激活态 */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* 导航遮罩 */
+  .nav-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 9997;
+  }
+
+  /* 公共样式 */
+  .header {
+    padding: 10px 0;
+  }
+  .logo img {
+    width: 60px;
+  }
+  .back-to-top {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  /* 首页 */
+  .banner {
+    height: 250px;
+  }
+  .embroidery-show h2 {
+    font-size: 26px;
+  }
+  .show-list {
+    grid-template-columns: 1fr; /* 手机1列展示 */
+    gap: 20px;
+  }
+  .show-item {
+    padding: 15px;
+  }
+  .entrance a {
+    padding: 10px 20px;
+    font-size: 16px;
+    width: 80%;
+  }
+
+  /* AR教学页 */
+  .ar-banner h1 {
+    font-size: 26px;
+    text-align: center;
+    padding: 0 20px;
+  }
+  .ar-section h2 {
+    font-size: 24px;
+  }
+  .ar-section p {
+    font-size: 16px;
+  }
+  .ar-function {
+    grid-template-columns: 1fr; /* 功能模块1列 */
+    gap: 20px;
+  }
+  .ar-device ul {
+    grid-template-columns: 1fr; /* 设备要求1列 */
+  }
+  .ar-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    width: 90%;
+  }
+  .ar-modal-content {
+    padding: 20px;
+  }
+
+  /* 作品广场页 */
+  .works-banner h1 {
+    font-size: 26px;
+    padding: 0 20px;
+  }
+  .works-filter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .filter-list {
+    width: 100%;
+    gap: 10px;
+  }
+  .filter-item {
+    padding: 6px 15px;
+    font-size: 14px;
+  }
+  .works-list {
+    grid-template-columns: 1fr; /* 作品1列展示 */
+    gap: 20px;
+  }
+  .works-img {
+    height: 200px;
+  }
+  .pagination {
+    gap: 5px;
+  }
+  .page-item {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+  }
+  .works-modal-img {
+    height: 220px; /* 弹窗图片适配 */
+  }
+  .works-modal-info {
+    padding: 20px;
+  }
+  .works-modal-title {
+    font-size: 22px;
+  }
+  .works-modal-meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* 文化内涵页 */
+  .culture-banner h1 {
+    font-size: 26px;
+    padding: 0 20px;
+    text-align: center;
+  }
+  .culture-item h2 {
+    font-size: 22px;
+  }
+  .culture-item p {
+    font-size: 16px;
+  }
+
+  /* 页脚 */
+  .footer p {
+    font-size: 14px;
+  }
+}
+
+/* 隐藏默认汉堡按钮（PC端不显示） */
+.hamburger {
+  display: none;
+}
+.nav-mask {
+  display: none;
+}

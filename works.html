@@ -1,176 +1,163 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <!-- 基础元信息：字符编码 + 移动端视口适配核心配置 -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>庆阳香包 - 作品广场</title>
+
+  <!-- 样式文件引入：仅引入整合后的主样式文件 -->
   <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
-  <!-- 头部导航：新增汉堡按钮 + 导航遮罩 -->
+  <!-- ==============================================
+       头部导航区（PC端导航 + 移动端汉堡导航）
+  ============================================== -->
   <header class="header">
     <div class="container">
+      <!-- Logo区域：添加alt/title提升可访问性 -->
       <div class="logo">
-        <img src="images/logo.png" alt="庆阳香包logo">
+        <img src="images/logo.png" alt="庆阳香包logo" title="庆阳非遗香包文化传承网">
       </div>
-      <!-- 新增：移动端汉堡按钮 -->
+
+      <!-- 移动端汉堡按钮（PC端隐藏） -->
       <div class="hamburger" id="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
+
+      <!-- 主导航菜单：作品广场页高亮 -->
       <nav class="nav" id="nav">
         <ul>
-          <li><a href="index.html" class="active">首页</a></li>
+          <li><a href="index.html">首页</a></li>
           <li><a href="ar-teach.html">AR教学</a></li>
-          <li><a href="works.html">作品广场</a></li>
+          <li><a href="works.html" class="active">作品广场</a></li>
           <li><a href="culture.html">文化内涵</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  <!-- 新增：导航遮罩 -->
+
+  <!-- 移动端导航遮罩（点击关闭导航） -->
   <div class="nav-mask" id="navMask"></div>
 
-  <!-- 作品广场banner -->
+  <!-- ==============================================
+       作品广场Banner区域
+  ============================================== -->
   <section class="works-banner">
-    <h1>庆阳香包作品广场 非遗匠心荟萃</h1>
+    <h1>庆阳香包作品广场 非遗匠心展示</h1>
   </section>
 
-  <!-- 作品广场核心内容 -->
+  <!-- ==============================================
+       作品广场核心内容区
+  ============================================== -->
   <section class="works-content">
     <div class="container">
-      <!-- 作品分类筛选 -->
+      <!-- 作品分类筛选栏 -->
       <div class="works-filter">
-        <h3>作品分类：</h3>
+        <h3>作品分类</h3>
         <div class="filter-list">
           <div class="filter-item active" data-filter="all">全部作品</div>
           <div class="filter-item" data-filter="生肖">生肖香包</div>
           <div class="filter-item" data-filter="福寿">福寿香包</div>
-          <div class="filter-item" data-filter="民俗">民俗香包</div>
           <div class="filter-item" data-filter="五毒">五毒香包</div>
+          <div class="filter-item" data-filter="民俗">民俗香包</div>
           <div class="filter-item" data-filter="布艺">布艺香包</div>
         </div>
       </div>
 
-      <!-- 作品展示网格 -->
+      <!-- 作品展示列表（网格布局） -->
       <div class="works-list">
-        <!-- 作品1：生肖香包 -->
+        <!-- 作品项1：生肖香包-虎 -->
         <div class="works-item" data-category="生肖">
-          <img src="images/work1.jpg" alt="生肖鼠香包" class="works-img">
+          <img src="images/work1.jpg" alt="生肖虎香包" class="works-img" title="生肖虎香包">
           <div class="works-info">
-            <h3 class="works-title">生肖鼠·福鼠送财香包</h3>
-            <p class="works-author">非遗传承人：张桂英</p>
-            <p class="works-craft">传统平针+打籽针绣制</p>
-            <p class="works-desc">以生肖鼠为原型，融合铜钱、如意纹样，寓意招财进宝、吉祥如意，绣工细腻，色彩艳丽，是庆阳生肖香包代表作。</p>
+            <h3 class="works-title">生肖虎香包</h3>
+            <p class="works-author">传承人：王秀莲</p>
+            <p class="works-craft">工艺：平针+打籽针</p>
+            <p class="works-desc">以寅虎为原型，采用庆阳传统红底金线绣制，虎纹灵动，内置艾草香料，寓意镇宅辟邪、虎虎生威。</p>
           </div>
         </div>
 
-        <!-- 作品2：福寿香包 -->
+        <!-- 作品项2：福寿香包-牡丹寿桃 -->
         <div class="works-item" data-category="福寿">
-          <img src="images/work2.jpg" alt="福寿双全香包" class="works-img">
+          <img src="images/work2.jpg" alt="牡丹寿桃香包" class="works-img" title="牡丹寿桃香包">
           <div class="works-info">
-            <h3 class="works-title">福寿双全·牡丹寿桃香包</h3>
-            <p class="works-author">民间艺人：李凤莲</p>
-            <p class="works-craft">锁针+辫针绣制</p>
-            <p class="works-desc">融合牡丹、寿桃、蝙蝠纹样，牡丹象征富贵，寿桃寓意长寿，蝙蝠谐音“福”，整体造型饱满，是祝寿送礼佳品。</p>
+            <h3 class="works-title">牡丹寿桃香包</h3>
+            <p class="works-author">传承人：李巧艳</p>
+            <p class="works-craft">工艺：锁针+辫针</p>
+            <p class="works-desc">融合牡丹与寿桃纹样，色彩艳丽，绣工细腻，是庆阳祝寿礼赠的经典福寿香包，寓意富贵长寿。</p>
           </div>
         </div>
 
-        <!-- 作品3：民俗香包（五毒） -->
+        <!-- 作品项3：五毒香包-端午款 -->
         <div class="works-item" data-category="五毒">
-          <img src="images/work3.jpg" alt="端午佩饰香包" class="works-img">
+          <img src="images/work3.jpg" alt="端午五毒香包" class="works-img" title="端午五毒香包">
           <div class="works-info">
-            <h3 class="works-title">端午佩饰·五毒避瘟香包</h3>
-            <p class="works-author">非遗传承人：王秀琴</p>
-            <p class="works-craft">立体布艺+刺绣结合</p>
-            <p class="works-desc">庆阳端午传统香包，绣制蛇、蝎、蜈蚣、壁虎、蟾蜍五毒纹样，内置艾草、菖蒲，寓意驱邪避瘟、平安健康。</p>
+            <h3 class="works-title">端午五毒香包</h3>
+            <p class="works-author">传承人：张桂英</p>
+            <p class="works-craft">工艺：立体刺绣+填充</p>
+            <p class="works-desc">端午专属五毒香包，绣制蛇、蝎、蜈蚣、壁虎、蟾蜍纹样，内置菖蒲香料，驱邪避瘟，是庆阳端午民俗代表作品。</p>
           </div>
         </div>
 
-        <!-- 作品4：生肖香包 -->
-        <div class="works-item" data-category="生肖">
-          <img src="images/work4.jpg" alt="生肖龙香包" class="works-img">
-          <div class="works-info">
-            <h3 class="works-title">生肖龙·龙腾盛世香包</h3>
-            <p class="works-author">民间艺人：赵桂兰</p>
-            <p class="works-craft">平针+盘金绣</p>
-            <p class="works-desc">以龙为核心纹样，搭配祥云、火焰，造型大气磅礴，色彩以红金为主，象征吉祥昌盛，是庆阳大型香包代表作。</p>
-          </div>
-        </div>
-
-        <!-- 作品5：布艺香包 -->
-        <div class="works-item" data-category="布艺">
-          <img src="images/work5.jpg" alt="布艺荷包香包" class="works-img">
-          <div class="works-info">
-            <h3 class="works-title">传统布艺·鸳鸯戏水荷包</h3>
-            <p class="works-author">非遗传承人：刘桂英</p>
-            <p class="works-craft">纯手工布艺拼接+刺绣</p>
-            <p class="works-desc">庆阳传统荷包样式，以鸳鸯戏水为主题，布艺拼接细腻，刺绣精致，内置丁香香料，兼具装饰与实用价值。</p>
-          </div>
-        </div>
-
-        <!-- 作品6：福寿香包 -->
-        <div class="works-item" data-category="福寿">
-          <img src="images/work6.jpg" alt="松鹤延年香包" class="works-img">
-          <div class="works-info">
-            <h3 class="works-title">松鹤延年·吉祥香包</h3>
-            <p class="works-author">民间艺人：孙凤英</p>
-            <p class="works-craft">打籽针+平针绣制</p>
-            <p class="works-desc">以松树、仙鹤为纹样，松象征常青，鹤寓意长寿，整体造型简约大气，是送给长辈的经典非遗礼品。</p>
-          </div>
-        </div>
-
-        <!-- 作品7：五毒香包 -->
-        <div class="works-item" data-category="五毒">
-          <img src="images/work7.jpg" alt="五毒挂件香包" class="works-img">
-          <div class="works-info">
-            <h3 class="works-title">五毒挂件·端午祈福香包</h3>
-            <p class="works-author">非遗传承人：马桂英</p>
-            <p class="works-craft">立体刺绣+流苏装饰</p>
-            <p class="works-desc">小巧精致的五毒挂件香包，适合端午佩戴，内置艾草香料，驱邪避瘟，色彩鲜艳，深受孩童喜爱。</p>
-          </div>
-        </div>
-
-        <!-- 作品8：民俗香包（婚庆） -->
+        <!-- 作品项4：民俗香包-婚嫁荷包 -->
         <div class="works-item" data-category="民俗">
-          <img src="images/work8.jpg" alt="婚庆鸳鸯香包" class="works-img">
+          <img src="images/work4.jpg" alt="婚嫁荷包香包" class="works-img" title="婚嫁荷包香包">
           <div class="works-info">
-            <h3 class="works-title">婚庆鸳鸯·百年好合香包</h3>
-            <p class="works-author">民间艺人：周凤莲</p>
-            <p class="works-craft">锁针+辫针+盘金绣</p>
-            <p class="works-desc">庆阳婚嫁传统香包，以鸳鸯、荷花为纹样，象征夫妻恩爱、百年好合，是女方陪嫁的重要非遗饰品。</p>
+            <h3 class="works-title">婚嫁荷包香包</h3>
+            <p class="works-author">传承人：刘雪琴</p>
+            <p class="works-craft">工艺：拼布+锁边绣</p>
+            <p class="works-desc">庆阳婚嫁民俗香包，绣制鸳鸯、并蒂莲纹样，红绸为底，流苏点缀，寓意百年好合、永结同心。</p>
           </div>
         </div>
 
-        <!-- 作品9：布艺香包 -->
+        <!-- 作品项5：布艺香包-传统荷包 -->
         <div class="works-item" data-category="布艺">
-          <img src="images/work9.jpg" alt="布艺生肖香包" class="works-img">
+          <img src="images/work5.jpg" alt="传统布艺荷包" class="works-img" title="传统布艺荷包">
           <div class="works-info">
-            <h3 class="works-title">布艺生肖·十二生肖套装香包</h3>
-            <p class="works-author">非遗传承人：吴桂英</p>
-            <p class="works-craft">纯手工布艺+刺绣</p>
-            <p class="works-desc">十二生肖全套布艺香包，每个生肖造型灵动，布艺拼接工整，刺绣细腻，是庆阳香包收藏级作品。</p>
+            <h3 class="works-title">传统布艺荷包</h3>
+            <p class="works-author">传承人：马晓丽</p>
+            <p class="works-craft">工艺：粗布拼接+刺绣</p>
+            <p class="works-desc">纯手工粗布布艺荷包，造型小巧，内置丁香、艾草香料，兼具装饰与实用，是庆阳最具烟火气的传统香包。</p>
+          </div>
+        </div>
+
+        <!-- 作品项6：生肖香包-兔 -->
+        <div class="works-item" data-category="生肖">
+          <img src="images/work6.jpg" alt="生肖兔香包" class="works-img" title="生肖兔香包">
+          <div class="works-info">
+            <h3 class="works-title">生肖兔香包</h3>
+            <p class="works-author">传承人：王秀莲</p>
+            <p class="works-craft">工艺：平针+盘金绣</p>
+            <p class="works-desc">卯兔香包以白绸为底，绣制玉兔捣药纹样，搭配绿边装饰，寓意平安顺遂、吉祥如意。</p>
           </div>
         </div>
       </div>
 
       <!-- 分页组件 -->
-      <!-- <div class="pagination">
+      <div class="pagination">
         <div class="page-item page-prev page-disabled">上一页</div>
         <div class="page-item active">1</div>
         <div class="page-item">2</div>
         <div class="page-item">3</div>
         <div class="page-item page-next">下一页</div>
-      </div> -->
+      </div>
     </div>
   </section>
 
-  <!-- 作品详情弹窗 -->
+  <!-- ==============================================
+       作品详情弹窗（点击作品项弹出）
+  ============================================== -->
   <div class="works-modal" id="worksModal">
     <div class="works-modal-content">
+      <!-- 弹窗关闭按钮 -->
       <span class="works-modal-close" id="worksModalClose">&times;</span>
-      <img src="" alt="" class="works-modal-img" id="modalImg">
+      <!-- 弹窗图片 -->
+      <img src="" alt="作品详情图" class="works-modal-img" id="modalImg">
+      <!-- 弹窗信息 -->
       <div class="works-modal-info">
         <h3 class="works-modal-title" id="modalTitle"></h3>
         <div class="works-modal-meta">
@@ -183,10 +170,14 @@
     </div>
   </div>
 
-  <!-- 回到顶部按钮 -->
-  <div class="back-to-top">↑</div>
+  <!-- ==============================================
+       回到顶部按钮（滚动后显示）
+  ============================================== -->
+  <div class="back-to-top" title="回到顶部">↑</div>
 
-  <!-- 页脚 -->
+  <!-- ==============================================
+       页脚区域
+  ============================================== -->
   <footer class="footer">
     <div class="container">
       <p>庆阳非遗香包文化传承网 © 2025 版权所有</p>
@@ -194,7 +185,10 @@
     </div>
   </footer>
 
-  <!-- 引入JS -->
+  <!-- ==============================================
+       脚本引入：第三方库 → 自定义脚本
+       放置在body底部：确保DOM加载完成后执行，提升渲染效率
+  ============================================== -->
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="main.js"></script>
 </body>

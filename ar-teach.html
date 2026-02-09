@@ -2,27 +2,35 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>庆阳香包 - AR教学</title>
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <!-- 头部导航 -->
+  <!-- 头部导航：新增汉堡按钮 + 导航遮罩 -->
   <header class="header">
     <div class="container">
       <div class="logo">
         <img src="images/logo.png" alt="庆阳香包logo">
       </div>
-      <nav class="nav">
+      <!-- 新增：移动端汉堡按钮 -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="nav" id="nav">
         <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a href="ar-teach.html" class="active">AR教学</a></li>
+          <li><a href="index.html" class="active">首页</a></li>
+          <li><a href="ar-teach.html">AR教学</a></li>
           <li><a href="works.html">作品广场</a></li>
           <li><a href="culture.html">文化内涵</a></li>
         </ul>
       </nav>
     </div>
   </header>
+  <!-- 新增：导航遮罩 -->
+  <div class="nav-mask" id="navMask"></div>
 
   <!-- AR教学页banner -->
   <section class="ar-banner">

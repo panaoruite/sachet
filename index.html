@@ -2,21 +2,26 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 优化视口设置（核心） -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>庆阳非遗香包 - 首页</title>
-  <!-- 引入样式 -->
   <link rel="stylesheet" href="main.css">
-  <!-- Swiper轮播库 -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 <body>
-  <!-- 头部导航 -->
+  <!-- 头部导航：新增汉堡按钮 + 导航遮罩 -->
   <header class="header">
     <div class="container">
       <div class="logo">
         <img src="images/logo.png" alt="庆阳香包logo">
       </div>
-      <nav class="nav">
+      <!-- 新增：移动端汉堡按钮 -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="nav" id="nav">
         <ul>
           <li><a href="index.html" class="active">首页</a></li>
           <li><a href="ar-teach.html">AR教学</a></li>
@@ -26,6 +31,8 @@
       </nav>
     </div>
   </header>
+  <!-- 新增：导航遮罩 -->
+  <div class="nav-mask" id="navMask"></div>
 
   <!-- 轮播图 -->
   <section class="banner">

@@ -1,4 +1,7 @@
-/* ========== 样式重置（reset.css） ========== */
+/* ==============================================
+   1. 样式重置 (Reset)
+   作用：消除浏览器默认样式差异，统一基础样式
+============================================== */
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +12,7 @@ body {
   font-family: "Microsoft Yahei", sans-serif;
   color: #333;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased; /* 移动端字体抗锯齿 */
 }
 
 a {
@@ -32,7 +36,11 @@ img {
   clear: both;
 }
 
-/* ========== 公共样式（common.css） ========== */
+/* ==============================================
+   2. 公共样式 (Common)
+   作用：全页面复用的基础样式（导航、页脚、回到顶部等）
+============================================== */
+/* 容器：PC端固定宽度，移动端自适应 */
 .container {
   width: 1200px;
   margin: 0 auto;
@@ -43,6 +51,7 @@ img {
   background-color: #f8f3e6;
   padding: 15px 0;
   border-bottom: 2px solid #d4a76a;
+  position: relative; /* 为汉堡导航定位做准备 */
 }
 
 .header .container {
@@ -108,13 +117,74 @@ img {
   cursor: pointer;
   display: none;
   z-index: 999;
+  transition: background-color 0.3s;
 }
 
 .back-to-top:hover {
   background-color: #b98846;
 }
 
-/* ========== 首页样式（index.css） ========== */
+/* 移动端汉堡导航（默认隐藏，移动端显示） */
+.hamburger {
+  display: none;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #8a5a2b;
+  border-radius: 3px;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s;
+}
+
+.hamburger span:nth-child(1) {
+  top: 8px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 16px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 24px;
+}
+
+/* 汉堡按钮激活态 */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* 导航遮罩（移动端） */
+.nav-mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9997;
+}
+
+/* ==============================================
+   3. 首页样式 (Index)
+============================================== */
 /* 轮播图 */
 .banner {
   width: 100%;
@@ -212,7 +282,9 @@ img {
   background-color: #b98846;
 }
 
-/* ========== AR教学页样式（ar-teach.css） ========== */
+/* ==============================================
+   4. AR教学页样式 (AR-Teach)
+============================================== */
 .ar-banner {
   width: 100%;
   height: 350px;
@@ -223,6 +295,7 @@ img {
   justify-content: center;
   position: relative;
 }
+
 .ar-banner::after {
   content: "";
   position: absolute;
@@ -233,6 +306,7 @@ img {
   background: rgba(0,0,0,0.3);
   z-index: 1;
 }
+
 .ar-banner h1 {
   font-size: 42px;
   color: #fff;
@@ -245,6 +319,7 @@ img {
   padding: 60px 0;
   background-color: #faf7f0;
 }
+
 .ar-content .container {
   background-color: #fff;
   padding: 50px;
@@ -256,6 +331,7 @@ img {
 .ar-section {
   margin-bottom: 50px;
 }
+
 .ar-section h2 {
   font-size: 30px;
   color: #8a5a2b;
@@ -266,6 +342,7 @@ img {
   align-items: center;
   gap: 15px;
 }
+
 .ar-section h2::before {
   content: "";
   width: 6px;
@@ -273,6 +350,7 @@ img {
   background-color: #d4a76a;
   display: inline-block;
 }
+
 .ar-section p {
   font-size: 18px;
   color: #555;
@@ -287,15 +365,18 @@ img {
   gap: 30px;
   margin-top: 30px;
 }
+
 .ar-function-item {
   background-color: #f8f3e6;
   padding: 30px;
   border-radius: 10px;
   transition: transform 0.3s;
 }
+
 .ar-function-item:hover {
   transform: translateY(-5px);
 }
+
 .ar-function-item h3 {
   font-size: 22px;
   color: #8a5a2b;
@@ -304,10 +385,12 @@ img {
   align-items: center;
   gap: 10px;
 }
+
 .ar-function-item h3 img {
   width: 32px;
   height: 32px;
 }
+
 .ar-function-item p {
   font-size: 16px;
   color: #666;
@@ -319,6 +402,7 @@ img {
   counter-reset: step;
   margin-top: 30px;
 }
+
 .ar-step-item {
   display: flex;
   align-items: flex-start;
@@ -330,6 +414,7 @@ img {
   border-radius: 10px;
   position: relative;
 }
+
 .ar-step-item::before {
   counter-increment: step;
   content: counter(step);
@@ -344,16 +429,19 @@ img {
   font-weight: bold;
   flex-shrink: 0;
 }
+
 .ar-step-item h3 {
   font-size: 20px;
   color: #8a5a2b;
   margin-bottom: 10px;
 }
+
 .ar-step-item p {
   font-size: 16px;
   color: #666;
   line-height: 1.7;
 }
+
 .ar-step-item img {
   width: 200px;
   border-radius: 8px;
@@ -367,16 +455,19 @@ img {
   border-radius: 10px;
   margin-top: 20px;
 }
+
 .ar-device h3 {
   font-size: 22px;
   color: #8a5a2b;
   margin-bottom: 20px;
 }
+
 .ar-device ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
 }
+
 .ar-device li {
   font-size: 16px;
   color: #555;
@@ -387,6 +478,7 @@ img {
   align-items: center;
   gap: 10px;
 }
+
 .ar-device li::before {
   content: "✔";
   color: #d4a76a;
@@ -399,6 +491,7 @@ img {
   text-align: center;
   margin-top: 40px;
 }
+
 .ar-btn {
   display: inline-block;
   padding: 15px 40px;
@@ -411,6 +504,7 @@ img {
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(212, 167, 106, 0.3);
 }
+
 .ar-btn:hover {
   background-color: #b98846;
   transform: translateY(-3px);
@@ -430,6 +524,7 @@ img {
   justify-content: center;
   z-index: 9999;
 }
+
 .ar-modal-content {
   background-color: #fff;
   width: 600px;
@@ -439,6 +534,7 @@ img {
   text-align: center;
   position: relative;
 }
+
 .ar-modal-close {
   position: absolute;
   top: 20px;
@@ -448,20 +544,24 @@ img {
   cursor: pointer;
   transition: color 0.3s;
 }
+
 .ar-modal-close:hover {
   color: #d4a76a;
 }
+
 .ar-modal-content h3 {
   font-size: 24px;
   color: #8a5a2b;
   margin-bottom: 20px;
 }
+
 .ar-modal-content p {
   font-size: 18px;
   color: #555;
   margin-bottom: 30px;
   line-height: 1.8;
 }
+
 .ar-modal-btn {
   padding: 12px 30px;
   background-color: #d4a76a;
@@ -472,11 +572,14 @@ img {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 .ar-modal-btn:hover {
   background-color: #b98846;
 }
 
-/* ========== 作品广场页样式（works.css） ========== */
+/* ==============================================
+   5. 作品广场页样式 (Works)
+============================================== */
 .works-banner {
   width: 100%;
   height: 350px;
@@ -487,6 +590,7 @@ img {
   justify-content: center;
   position: relative;
 }
+
 .works-banner::after {
   content: "";
   position: absolute;
@@ -497,6 +601,7 @@ img {
   background: rgba(0,0,0,0.3);
   z-index: 1;
 }
+
 .works-banner h1 {
   font-size: 42px;
   color: #fff;
@@ -509,6 +614,7 @@ img {
   padding: 60px 0;
   background-color: #faf7f0;
 }
+
 .works-content .container {
   background-color: #fff;
   padding: 50px;
@@ -526,17 +632,20 @@ img {
   border-bottom: 2px solid #eee;
   padding-bottom: 20px;
 }
+
 .works-filter h3 {
   font-size: 22px;
   color: #8a5a2b;
   margin-right: 20px;
   font-weight: 600;
 }
+
 .filter-list {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
 }
+
 .filter-item {
   padding: 8px 20px;
   background-color: #f8f3e6;
@@ -546,6 +655,7 @@ img {
   transition: all 0.3s;
   font-size: 16px;
 }
+
 .filter-item.active, .filter-item:hover {
   background-color: #d4a76a;
   color: #fff;
@@ -558,6 +668,7 @@ img {
   gap: 30px;
   margin-bottom: 50px;
 }
+
 .works-item {
   background-color: #fff;
   border-radius: 10px;
@@ -566,22 +677,27 @@ img {
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }
+
 .works-item:hover {
   transform: translateY(-8px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
+
 .works-img {
   width: 100%;
   height: 280px;
   object-fit: cover;
   transition: transform 0.3s;
 }
+
 .works-item:hover .works-img {
   transform: scale(1.05);
 }
+
 .works-info {
   padding: 20px;
 }
+
 .works-title {
   font-size: 20px;
   color: #8a5a2b;
@@ -591,6 +707,7 @@ img {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .works-author {
   font-size: 14px;
   color: #666;
@@ -599,10 +716,12 @@ img {
   align-items: center;
   gap: 8px;
 }
+
 .works-author::before {
   content: "👤";
   font-size: 16px;
 }
+
 .works-craft {
   font-size: 14px;
   color: #999;
@@ -611,10 +730,12 @@ img {
   align-items: center;
   gap: 8px;
 }
+
 .works-craft::before {
   content: "🧵";
   font-size: 16px;
 }
+
 .works-desc {
   font-size: 15px;
   color: #555;
@@ -632,6 +753,7 @@ img {
   align-items: center;
   gap: 10px;
 }
+
 .page-item {
   width: 40px;
   height: 40px;
@@ -644,15 +766,18 @@ img {
   transition: all 0.3s;
   font-size: 16px;
 }
+
 .page-item.active, .page-item:hover {
   background-color: #d4a76a;
   color: #fff;
 }
+
 .page-prev, .page-next {
   padding: 0 15px;
   border-radius: 20px;
   width: auto;
 }
+
 .page-disabled {
   background-color: #eee;
   color: #ccc;
@@ -673,6 +798,7 @@ img {
   z-index: 9999;
   overflow-y: auto;
 }
+
 .works-modal-content {
   background-color: #fff;
   width: 800px;
@@ -682,6 +808,7 @@ img {
   position: relative;
   margin: 20px;
 }
+
 .works-modal-close {
   position: absolute;
   top: 20px;
@@ -692,22 +819,27 @@ img {
   z-index: 10;
   transition: color 0.3s;
 }
+
 .works-modal-close:hover {
   color: #d4a76a;
 }
+
 .works-modal-img {
   width: 100%;
   height: 400px;
   object-fit: cover;
 }
+
 .works-modal-info {
   padding: 30px;
 }
+
 .works-modal-title {
   font-size: 28px;
   color: #8a5a2b;
   margin-bottom: 15px;
 }
+
 .works-modal-meta {
   display: flex;
   gap: 30px;
@@ -715,17 +847,20 @@ img {
   font-size: 16px;
   color: #666;
 }
+
 .works-modal-meta span {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .works-modal-desc {
   font-size: 18px;
   color: #555;
   line-height: 1.9;
   margin-bottom: 20px;
 }
+
 .works-modal-craft {
   padding: 15px 20px;
   background-color: #f8f3e6;
@@ -735,7 +870,9 @@ img {
   line-height: 1.8;
 }
 
-/* ========== 文化内涵页样式（culture.css） ========== */
+/* ==============================================
+   6. 文化内涵页样式 (Culture)
+============================================== */
 .culture-banner {
   width: 100%;
   height: 300px;
@@ -776,15 +913,18 @@ img {
   line-height: 1.8;
 }
 
-/* ========== 移动端适配核心样式 ========== */
-/* 基础响应式设置 */
+/* ==============================================
+   7. 移动端适配 (Media Query)
+   适配逻辑：大屏→小屏（1200px → 1024px → 768px）
+============================================== */
+/* 大屏平板/小屏PC (≤1200px) */
 @media (max-width: 1200px) {
   .container {
-    width: 90%; /* 大屏平板/小屏PC适配 */
+    width: 90%;
   }
 }
 
-/* 平板适配 (768px - 1024px) */
+/* 平板适配 (≤1024px) */
 @media (max-width: 1024px) {
   /* 公共样式 */
   .header .container {
@@ -799,10 +939,10 @@ img {
 
   /* 首页 */
   .show-list {
-    grid-template-columns: repeat(2, 1fr); /* 平板2列展示 */
+    grid-template-columns: repeat(2, 1fr);
   }
   .banner {
-    height: 350px; /* 降低轮播高度 */
+    height: 350px;
   }
 
   /* AR教学页 */
@@ -816,11 +956,11 @@ img {
     padding: 30px 20px;
   }
   .ar-step-item {
-    flex-direction: column; /* 步骤图文上下排列 */
+    flex-direction: column;
     gap: 15px;
   }
   .ar-step-item img {
-    width: 100%; /* 步骤图全屏宽 */
+    width: 100%;
     height: auto;
   }
 
@@ -835,10 +975,10 @@ img {
     padding: 30px 20px;
   }
   .works-list {
-    grid-template-columns: repeat(2, 1fr); /* 平板2列作品 */
+    grid-template-columns: repeat(2, 1fr);
   }
   .works-img {
-    height: 220px; /* 降低作品图片高度 */
+    height: 220px;
   }
 
   /* 文化内涵页 */
@@ -852,7 +992,7 @@ img {
 
 /* 手机适配 (≤768px) */
 @media (max-width: 768px) {
-  /* ===== 移动端汉堡导航 ===== */
+  /* 移动端导航核心样式 */
   .nav {
     position: fixed;
     top: 0;
@@ -880,55 +1020,9 @@ img {
     font-size: 18px;
   }
 
-  /* 汉堡按钮 */
+  /* 显示汉堡按钮 */
   .hamburger {
     display: block;
-    width: 36px;
-    height: 36px;
-    position: relative;
-    cursor: pointer;
-    z-index: 9999;
-  }
-  .hamburger span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #8a5a2b;
-    border-radius: 3px;
-    position: absolute;
-    left: 0;
-    transition: all 0.3s;
-  }
-  .hamburger span:nth-child(1) {
-    top: 8px;
-  }
-  .hamburger span:nth-child(2) {
-    top: 16px;
-  }
-  .hamburger span:nth-child(3) {
-    top: 24px;
-  }
-  /* 汉堡按钮激活态 */
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-  }
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-
-  /* 导航遮罩 */
-  .nav-mask {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 9997;
   }
 
   /* 公共样式 */
@@ -954,7 +1048,7 @@ img {
     font-size: 26px;
   }
   .show-list {
-    grid-template-columns: 1fr; /* 手机1列展示 */
+    grid-template-columns: 1fr;
     gap: 20px;
   }
   .show-item {
@@ -979,11 +1073,11 @@ img {
     font-size: 16px;
   }
   .ar-function {
-    grid-template-columns: 1fr; /* 功能模块1列 */
+    grid-template-columns: 1fr;
     gap: 20px;
   }
   .ar-device ul {
-    grid-template-columns: 1fr; /* 设备要求1列 */
+    grid-template-columns: 1fr;
   }
   .ar-btn {
     padding: 12px 30px;
@@ -1013,7 +1107,7 @@ img {
     font-size: 14px;
   }
   .works-list {
-    grid-template-columns: 1fr; /* 作品1列展示 */
+    grid-template-columns: 1fr;
     gap: 20px;
   }
   .works-img {
@@ -1029,7 +1123,7 @@ img {
     font-size: 14px;
   }
   .works-modal-img {
-    height: 220px; /* 弹窗图片适配 */
+    height: 220px;
   }
   .works-modal-info {
     padding: 20px;
@@ -1059,12 +1153,4 @@ img {
   .footer p {
     font-size: 14px;
   }
-}
-
-/* 隐藏默认汉堡按钮（PC端不显示） */
-.hamburger {
-  display: none;
-}
-.nav-mask {
-  display: none;
 }

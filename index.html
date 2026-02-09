@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <!-- 基础元信息：字符编码 + 移动端视口适配 -->
   <meta charset="UTF-8">
-  <!-- 优化视口设置（核心） -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>庆阳非遗香包 - 首页</title>
-  <link rel="stylesheet" href="main.css">
+
+  <!-- 样式文件引入：第三方样式 → 自定义样式 -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
-  <!-- 头部导航：新增汉堡按钮 + 导航遮罩 -->
+  <!-- ==============================================
+       头部导航区（含PC端导航 + 移动端汉堡导航）
+  ============================================== -->
   <header class="header">
     <div class="container">
+      <!-- Logo区域 -->
       <div class="logo">
-        <img src="images/logo.png" alt="庆阳香包logo">
+        <img src="images/logo.png" alt="庆阳香包logo" title="庆阳非遗香包文化传承网">
       </div>
-      <!-- 新增：移动端汉堡按钮 -->
+
+      <!-- 移动端汉堡按钮（PC端隐藏） -->
       <div class="hamburger" id="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
+
+      <!-- 主导航菜单 -->
       <nav class="nav" id="nav">
         <ul>
           <li><a href="index.html" class="active">首页</a></li>
@@ -31,48 +40,64 @@
       </nav>
     </div>
   </header>
-  <!-- 新增：导航遮罩 -->
+
+  <!-- 移动端导航遮罩（点击遮罩关闭导航） -->
   <div class="nav-mask" id="navMask"></div>
 
-  <!-- 轮播图 -->
+  <!-- ==============================================
+       首页轮播图区域
+  ============================================== -->
   <section class="banner">
     <div class="swiper">
+      <!-- 轮播内容容器 -->
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="images/banner.jpg" alt="庆阳香包banner">
+          <img src="images/banner.jpg" alt="庆阳香包banner" title="庆阳非遗香包文化传承">
         </div>
         <div class="swiper-slide">
-          <img src="images/embroidery1.jpg" alt="庆阳香包展示">
+          <img src="images/embroidery1.jpg" alt="庆阳香包展示" title="庆阳香包非遗作品">
         </div>
         <div class="swiper-slide">
-          <img src="images/works-banner.jpg" alt="香包作品广场">
+          <img src="images/works-banner.jpg" alt="香包作品广场" title="庆阳香包作品广场">
         </div>
       </div>
-      <!-- 分页器 -->
+
+      <!-- 轮播分页器（小圆点） -->
       <div class="swiper-pagination"></div>
-      <!-- 导航按钮 -->
+
+      <!-- 轮播左右导航按钮 -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
   </section>
 
-  <!-- 香包展示区 -->
+  <!-- ==============================================
+       香包展示核心区域
+  ============================================== -->
   <section class="embroidery-show">
     <div class="container">
+      <!-- 区域标题 -->
       <h2>庆阳香包 非遗瑰宝</h2>
+
+      <!-- 香包展示列表（网格布局） -->
       <div class="show-list">
+        <!-- 展示项1：生肖香包 -->
         <div class="show-item">
-          <img src="images/embroidery1.jpg" alt="庆阳生肖香包">
+          <img src="images/embroidery1.jpg" alt="庆阳生肖香包" title="庆阳生肖香包">
           <h3>生肖香包</h3>
           <p>以十二生肖为原型，一针一线勾勒出灵动的造型，寄托了人们对美好生活的祈愿，是庆阳香包中最具代表性的品类之一。</p>
         </div>
+
+        <!-- 展示项2：福寿香包 -->
         <div class="show-item">
-          <img src="images/embroidery2.jpg" alt="庆阳福寿香包">
+          <img src="images/embroidery2.jpg" alt="庆阳福寿香包" title="庆阳福寿香包">
           <h3>福寿香包</h3>
           <p>融合牡丹、蝙蝠、寿桃等吉祥纹样，寓意福寿安康，色彩艳丽，绣工精湛，是节庆送礼的佳品。</p>
         </div>
+
+        <!-- 展示项3：传统荷包 -->
         <div class="show-item">
-          <img src="images/work5.jpg" alt="庆阳荷包香包">
+          <img src="images/work5.jpg" alt="庆阳荷包香包" title="庆阳荷包香包">
           <h3>传统荷包</h3>
           <p>小巧精致，内置艾草、丁香等香料，兼具装饰与实用价值，是庆阳民间传承千年的特色手工艺品。</p>
         </div>
@@ -80,17 +105,23 @@
     </div>
   </section>
 
-  <!-- 非遗简介入口 -->
+  <!-- ==============================================
+       AR教学入口区域
+  ============================================== -->
   <section class="entrance">
     <div class="container">
-      <a href="ar-teach.html">体验AR教学 学习香包制作</a>
+      <a href="ar-teach.html" title="体验AR教学 学习香包制作">体验AR教学 学习香包制作</a>
     </div>
   </section>
 
-  <!-- 回到顶部按钮 -->
-  <div class="back-to-top">↑</div>
+  <!-- ==============================================
+       回到顶部按钮（滚动后显示）
+  ============================================== -->
+  <div class="back-to-top" title="回到顶部">↑</div>
 
-  <!-- 页脚 -->
+  <!-- ==============================================
+       页脚区域
+  ============================================== -->
   <footer class="footer">
     <div class="container">
       <p>庆阳非遗香包文化传承网 © 2025 版权所有</p>
@@ -98,7 +129,10 @@
     </div>
   </footer>
 
-  <!-- 引入JS -->
+  <!-- ==============================================
+       脚本引入：第三方脚本 → 自定义脚本
+       放在body底部：确保DOM加载完成后执行，提升页面加载速度
+  ============================================== -->
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="main.js"></script>

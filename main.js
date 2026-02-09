@@ -90,7 +90,7 @@ function initMobileNav() {
 function initCommonInteraction() {
   const { backToTop, navLinks } = DOM_SELECTORS;
 
-  // 3.1 导航高亮：根据当前页面URL匹配激活状态
+  // 3.1 导航高亮：根据当前页面URL匹配激活状态（保留原有逻辑）
   const currentUrl = window.location.href;
   navLinks.each(function() {
     const linkUrl = $(this).attr("href");
@@ -99,14 +99,38 @@ function initCommonInteraction() {
     }
   });
 
-  // 3.2 回到顶部按钮
-  $(window).scroll(function() {
-    // 滚动超过300px显示按钮，否则隐藏
-    backToTop.fadeToggle($(this).scrollTop() > 300);
+  // --------------------------
+  // 修复后：回到顶部按钮（解决闪烁问题）
+  // --------------------------
+  // 防抖函数：减少滚动事件高频触发（核心解决闪烁）
+  function debounce(func, wait = 100) {
+    let timeout;
+    return function() {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, arguments), wait);
+    };
+  }
+
+  // 滚动处理逻辑（加状态判断，避免反复触发动画）
+  const handleScroll = debounce(function() {
+    const scrollTop = $(window).scrollTop();
+    // 只在“需要切换状态”时执行，避免高频重复操作
+    if (scrollTop > 300) {
+      if (backToTop.is(":hidden")) {
+        backToTop.show(); // 直接显示，替代易闪烁的fadeToggle
+      }
+    } else {
+      if (backToTop.is(":visible")) {
+        backToTop.hide(); // 直接隐藏，无动画叠加
+      }
+    }
   });
 
+  // 绑定防抖后的滚动事件
+  $(window).scroll(handleScroll);
+
+  // 回到顶部点击事件（保留原有平滑滚动逻辑）
   backToTop.click(function() {
-    // 平滑滚动到顶部
     $("html, body").animate({ scrollTop: 0 }, 500);
   });
 }
@@ -180,20 +204,27 @@ function initWorksPage() {
   // 无作品广场元素时跳过
   if (!worksItems.length) return;
 
-  // 6.1 作品分类筛选
-  filterItems.click(function() {
-    // 切换筛选激活状态
-    filterItems.removeClass("active");
-    $(this).addClass("active");
-    const filterCategory = $(this).data("filter");
+// 6.1 作品分类筛选
+filterItems.click(function() {
+  // 切换筛选激活状态
+  filterItems.removeClass("active");
+  $(this).addClass("active");
+  // 改用attr()获取data属性，避免jQuery data()缓存问题
+  const filterCategory = $(this).attr("data-filter");
 
-    // 筛选作品：显示匹配分类/全部作品，隐藏其他
-    worksItems.each(function() {
-      const workCategory = $(this).data("category");
-      const isMatch = filterCategory === "all" || filterCategory === workCategory;
-      $(this).fadeToggle(isMatch, 300);
-    });
+  // 筛选作品：精准匹配分类，用show/hide替代fadeToggle
+  worksItems.each(function() {
+    const $item = $(this);
+    const workCategory = $item.attr("data-category");
+    const isMatch = filterCategory === "all" || filterCategory === workCategory;
+    
+    if (isMatch) {
+      $item.show(300); // 匹配则显示
+    } else {
+      $item.hide(300); // 不匹配则隐藏
+    }
   });
+});
 
   // 6.2 作品详情弹窗
   worksItems.click(function() {
